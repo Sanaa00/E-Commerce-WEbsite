@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Brands from "./Pages/Brands";
 import Shopping from "./Pages/Shopping";
+import Pages from "./Pages/Pages";
 
 function App() {
   const [brands, setBrands] = useState({});
@@ -38,7 +39,7 @@ function App() {
         <Route index element={<Home />} />
         <Route path="Brands" element={<Brands brands={brands} />} />
         <Route path="shopping" element={<Shopping brands={brands} />} />
-
+        <Route path="pages" element={<Pages />} />
         <Route path="about" element={<About />} />
         <Route path="favourite" element={<Favourite />} />
         <Route path="profile" element={<Profile />} />

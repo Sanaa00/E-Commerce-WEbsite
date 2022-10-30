@@ -21,6 +21,9 @@ function NavBar() {
           <Link to="/pagination" className="mx-4 text-2xl  hover:scale-110">
             pagination
           </Link>
+          <Link to="/pages" className="mx-4 text-2xl  hover:scale-110">
+            pages
+          </Link>
         </div>
         <div className="flex justify-end items-center px-10 ">
           <Link to="/bag" className="px-2 ">
