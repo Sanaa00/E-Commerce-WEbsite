@@ -1,9 +1,56 @@
 import React from "react";
-
+import { Formik, Form, useFormik, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
 function Profile() {
+  const initialValues = {
+    name: "",
+    email: "",
+    password: "",
+  };
+  const onSubmit = (values) => {
+    console.log(values);
+  };
+  const validationSchema = Yup.object({
+    name: Yup.string().required("required"),
+    email: Yup.string().email("dubara").required("required"),
+    password: Yup.string().required("required"),
+  });
   return (
-    <>
-      <div className="grid grid-cols-2 justify-center items-center font-DM ">
+    <div>
+      <Formik
+        initialValues={initialValues}
+        onSubmit={onSubmit}
+        validationSchema={validationSchema}
+      >
+        <Form>
+          label
+          <label htmlFor="name">name</label>
+          <Field
+            name="name"
+            id="name"
+            type="text"
+            className="border-4 border-green-500"
+          />
+          <ErrorMessage name="name" />
+          <label htmlFor="email">email</label>
+          <Field
+            name="email"
+            id="email"
+            type="text"
+            className="border-4 border-green-500"
+          />
+          <ErrorMessage name="email" />
+          <label htmlFor="password">passsword</label>
+          <Field
+            name="password"
+            id="password"
+            type="text"
+            className="border-4 border-green-500"
+          />
+          <ErrorMessage name="password" /> <button type="submit">submit</button>
+        </Form>
+      </Formik>
+      {/* <div className="grid grid-cols-2 justify-center items-center font-DM ">
         <div className="grid justify-center items-center font-bold text-8xl text-zard  bg-no-repeat bg-cover bg-right h-screen w-full object-fit bg-[url('https://images.unsplash.com/photo-1625798368138-38fb1cbb807b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80')]">
           Welcome
         </div>
@@ -48,8 +95,8 @@ function Profile() {
             </form>
           </div>
         </div>
-      </div>
-    </>
+      </div> */}
+    </div>
   );
 }
 
