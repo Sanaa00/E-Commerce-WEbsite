@@ -21,7 +21,7 @@ function Home({ brands }) {
             </div>
             <Link
               to="/shopping"
-              className="w-32 h-10  flex justify-center items-center bg-yellow-300 rounded-md shadow-md text-gray-700 hover:bg-yellow-200 hover:scale-110 hover:shadow-md"
+              className="w-32 h-10  flex justify-center items-center transition duration-500 bg-yellow-300 rounded-md shadow-md text-gray-700 hover:bg-yellow-200 hover:scale-110 hover:shadow-md"
             >
               Go Shopping
             </Link>

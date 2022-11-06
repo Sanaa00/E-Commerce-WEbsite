@@ -1,13 +1,37 @@
-import React from "react";
-import { Formik, Form, useFormik, Field, ErrorMessage } from "formik";
+import React, { useState, useEffect } from "react";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import axios from "axios";
+import { Switch } from "@mui/material";
+
 function Profile() {
+  const [theme, setTheme] = useState("light");
+  useEffect(() => {
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [theme]);
+  const toggletheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
   const initialValues = {
     name: "",
     email: "",
     password: "",
   };
+  // onsubmit function to print data
+  // const onSubmit = (values) => {
+  //   console.log(values);
+  // };
+  // sending data to api
   const onSubmit = (values) => {
+    axios.post(`https://62dc35604438813a2613372b.mockapi.io/api/hotels/Users`, {
+      name: values.name,
+      email: values.email,
+      password: values.password,
+    });
     console.log(values);
   };
   const validationSchema = Yup.object({
@@ -15,14 +39,21 @@ function Profile() {
     email: Yup.string().email("dubara").required("required"),
     password: Yup.string().required("required"),
   });
+  // const sendFormData = () => {
+  //   axios.post(`https://62dc35604438813a2613372b.mockapi.io/api/hotels/Users`, {
+  //     name: initialValues.name,
+  //     email: initialValues.email,
+  //     password: initialValues.password,
+  //   });
+  // };
   return (
-    <div>
+    <div className="text-gray-900 dark:text-gray-50">
       <Formik
         initialValues={initialValues}
         onSubmit={onSubmit}
         validationSchema={validationSchema}
       >
-        <Form>
+        <Form className="bg-gray-50 dark:bg-gray-800">
           label
           <label htmlFor="name">name</label>
           <Field
@@ -50,6 +81,13 @@ function Profile() {
           <ErrorMessage name="password" /> <button type="submit">submit</button>
         </Form>
       </Formik>
+      <Switch onChange={toggletheme} />
+      {/* <button
+        onClick={toggletheme}
+        className="p-4 bg-gray-500 dark:bg-gray-900"
+      >
+        theme
+      </button> */}
       {/* <div className="grid grid-cols-2 justify-center items-center font-DM ">
         <div className="grid justify-center items-center font-bold text-8xl text-zard  bg-no-repeat bg-cover bg-right h-screen w-full object-fit bg-[url('https://images.unsplash.com/photo-1625798368138-38fb1cbb807b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80')]">
           Welcome

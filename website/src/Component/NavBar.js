@@ -28,7 +28,7 @@ function NavBar() {
         <div className="flex justify-end items-center px-10 ">
           <Link to="/bag" className="px-2 ">
             {" "}
-            <FiShoppingBag className=" w-5 h-5  hover:scale-110 " />
+            <FiShoppingBag className=" w-5 h-5  hover:scale-110 transition-all " />
           </Link>{" "}
           <Link to="/favourite" className="px-2  hover:scale-110">
             <FiHeart className=" w-5 h-5" />

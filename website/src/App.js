@@ -24,7 +24,7 @@ function App() {
         setBrands(groupBy(response.data, "brand"));
       })
       .catch((err) => setErr(err));
-  }, []);
+  }, [err]);
 
   const groupBy = function (array, key) {
     return array.reduce(function (dataArray, item) {
@@ -39,7 +39,7 @@ function App() {
         <Route index element={<Home />} />
         <Route path="Brands" element={<Brands brands={brands} />} />
         <Route path="shopping" element={<Shopping brands={brands} />} />
-        <Route path="pages" element={<Pages />} />
+        <Route path="pages" element={<Pages brands={brands} />} />
         <Route path="about" element={<About />} />
         <Route path="favourite" element={<Favourite />} />
         <Route path="profile" element={<Profile />} />
